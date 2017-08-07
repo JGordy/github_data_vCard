@@ -1,40 +1,89 @@
+let data = {
+  "login": "JGordy",
+  "id": 26208200,
+  "avatar_url": "https://avatars1.githubusercontent.com/u/26208200?v=4",
+  "gravatar_id": "",
+  "url": "https://api.github.com/users/JGordy",
+  "html_url": "https://github.com/JGordy",
+  "followers_url": "https://api.github.com/users/JGordy/followers",
+  "following_url": "https://api.github.com/users/JGordy/following{/other_user}",
+  "gists_url": "https://api.github.com/users/JGordy/gists{/gist_id}",
+  "starred_url": "https://api.github.com/users/JGordy/starred{/owner}{/repo}",
+  "subscriptions_url": "https://api.github.com/users/JGordy/subscriptions",
+  "organizations_url": "https://api.github.com/users/JGordy/orgs",
+  "repos_url": "https://api.github.com/users/JGordy/repos",
+  "events_url": "https://api.github.com/users/JGordy/events{/privacy}",
+  "received_events_url": "https://api.github.com/users/JGordy/received_events",
+  "type": "User",
+  "site_admin": false,
+  "name": "Joseph Gordy",
+  "company": "The Iron Yard",
+  "blog": "jgordy.github.io",
+  "location": "Atlanta, GA",
+  "email": "jgordy2424@gmail.com",
+  "hireable": true,
+  "bio": "I've recently decided to make a change in careers at 33. For the past 15 years i've been in the retail industry, and just enrolled in a development bootcamp! ",
+  "public_repos": 20,
+  "public_gists": 0,
+  "followers": 4,
+  "following": 10,
+  "created_at": "2017-03-05T22:23:47Z",
+  "updated_at": "2017-08-07T17:54:38Z"
+}
+
+
 //  select the parent elements
+
 let header = document.querySelector(".header");
 
 let list = document.querySelector(".list");
 
-let icon = document.querySelector(".icon");
+let icon = document.getElementById("icon");
 
-// github api request
+// vCard Function
 
-function reqListener () {
-  let data = JSON.parse(this.responseText);
-console.log(data);
-  header.innerHTML = `<h1>${data.name}</h1>`;
+function vCardFunction () {
+    header.innerHTML = `<h1>${data.name}</h1>`;
 
-  list.innerHTML = `<li>
-                      <span>Name: </span>${data.name}
-                    </li>
-                    <li>
-                      <span>Github URL: </span><a>${data.url}</a>
-                    </li>
-                    <li>
-                      <span>Email: </span><a>${data.email}</a>
-                    </li>
-                    <li>
-                      <span>Company: </span>${data.company}
-                    </li>
-                    <li>
-                      <span>Website: </span><a href="${data.blog}">${data.blog}</a>
-                    </li>`;
+    list.innerHTML = `<li>
+                        <span>Name:  </span> ${data.name}
+                      </li>
+                      <li>
+                        <span>Github URL:   </span><a href="${data.url}">Jgordy</a>
+                      </li>
+                      <li>
+                        <span>Email:   </span><a>${data.email}</a>
+                      </li>
+                      <li>
+                        <span>Company:   </span>${data.company}
+                      </li>
+                      <li>
+                        <span>Website:   </span><a href="${data.blog}">${data.blog}</a>
+                      </li>`;
 
-  icon.innerHTML = `<img src=${data.avatar_url}>`;
+  let image = document.createElement("img");
+  image.setAttribute("src", data.avatar_url);
+  console.log(image);
+  icon.appendChild( image );
+
+  // icon.innerHTML = `<img src=${data.avatar_url}>`;
 
   console.log(data.name);
   console.log(header.innerHTML);
 }
 
-let req = new XMLHttpRequest();
-req.open("GET", "https://api.github.com/users/jgordy");
-req.addEventListener("load", reqListener);
-req.send();
+vCardFunction();
+
+
+
+// Github api request
+
+// function reqListener () {
+//    let info = JSON.parse(this.responseText);
+// console.log(data);
+// }
+//
+// let req = new XMLHttpRequest();
+// req.open("GET", "https://api.github.com/users/jgordy");
+// req.addEventListener("load", reqListener);
+// req.send();
