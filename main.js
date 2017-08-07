@@ -49,7 +49,7 @@ function vCardFunction () {
                         <span>Name:  </span> ${data.name}
                       </li>
                       <li>
-                        <span>Github URL:   </span><a href="${data.url}">Jgordy</a>
+                        <span>Github URL:   </span><a href=${data.html_url}>Jgordy</a>
                       </li>
                       <li>
                         <span>Email:   </span><a>${data.email}</a>
@@ -58,13 +58,13 @@ function vCardFunction () {
                         <span>Company:   </span>${data.company}
                       </li>
                       <li>
-                        <span>Website:   </span><a href="${data.blog}">${data.blog}</a>
+                        <span>Website:   </span><a href=https://${data.blog}>${data.blog}</a>
                       </li>`;
 
   let image = document.createElement("img");
   image.setAttribute("src", data.avatar_url);
-  console.log(image);
   icon.appendChild( image );
+  console.log(data.blog);
 }
 
 vCardFunction();
