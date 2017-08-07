@@ -64,7 +64,6 @@ function vCardFunction () {
   let image = document.createElement("img");
   image.setAttribute("src", data.avatar_url);
   icon.appendChild( image );
-  console.log(data.blog);
 }
 
 vCardFunction();
