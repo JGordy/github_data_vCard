@@ -65,11 +65,6 @@ function vCardFunction () {
   image.setAttribute("src", data.avatar_url);
   console.log(image);
   icon.appendChild( image );
-
-  // icon.innerHTML = `<img src=${data.avatar_url}>`;
-
-  console.log(data.name);
-  console.log(header.innerHTML);
 }
 
 vCardFunction();
